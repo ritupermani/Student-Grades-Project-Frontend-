@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 const API_BASE =
-  import.meta.env.VITE_API_BASE ||
-  "https://student-grades-project1.onrender.com/api/students";
+  import.meta.env.VITE_API_BASE;
 
 export default function StudentsTable({ students, onChange }) {
   const [editing, setEditing] = useState(null);
