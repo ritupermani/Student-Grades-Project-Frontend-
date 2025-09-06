@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UploadForm from "./components/UploadForm";
 import StudentsTable from "./components/StudentsTable";
 import "./styles.css";
-const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE = import.meta.env.VITE_API_BASE || "https://student-grades-project1.onrender.com/api/students";
 export default function App() {
   const [students, setStudents] = useState([]);
   const [total, setTotal] = useState(0);
