@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+const API_BASE =
+  import.meta.env.VITE_API_BASE ||
+  "https://student-grades-project1.onrender.com/api/students";
+
 export default function StudentsTable({ students, onChange }) {
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState({});
@@ -15,14 +19,11 @@ export default function StudentsTable({ students, onChange }) {
 
   async function saveEdit() {
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/students/${editing._id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        }
-      );
+      const res = await fetch(`${API_BASE}/${editing._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
       const d = await res.json();
       if (!res.ok) throw new Error(d.error || "Update failed");
       alert("Updated");
@@ -37,7 +38,7 @@ export default function StudentsTable({ students, onChange }) {
   async function del(id) {
     if (!confirm("Delete this student?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/students/${id}`, {
+      const res = await fetch(`${API_BASE}/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Delete failed");
