@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
-const API_BASE =
-  import.meta.env.VITE_API_BASE || "http://localhost:5000/api/students";
+const API_BASE = import.meta.env.VITE_API_BASE || "https://student-grades-project1.onrender.com/api/students";
+
 
 export default function UploadForm({ onUploaded }) {
   const [file, setFile] = useState(null);
